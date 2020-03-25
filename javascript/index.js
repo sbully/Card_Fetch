@@ -1,5 +1,5 @@
-var tab = document.getElementById("table");
-var container = document.getElementById("carteContainer")
+let tab = document.getElementById("table");
+let container = document.getElementById("carteContainer")
 
 
 fetch("https://arfp.eu/dataset/cards.json").then(function(response) {
@@ -10,8 +10,8 @@ fetch("https://arfp.eu/dataset/cards.json").then(function(response) {
 });
 
 function tablePopulate(json) {
-    var listCard = new Array();
-    var tabkey = Object.keys(json[0]);
+    let listCard = new Array();
+    let tabkey = Object.keys(json[0]);
     createHeaderTab(tabkey);
     /*     console.log(obj); */
 
@@ -20,33 +20,28 @@ function tablePopulate(json) {
         addRow(card);
     });
 
-    /* listCard.sort("attack"); */
-    var cardAtk = listCard.sort(compareAtk).reverse()[0];
+    let cardAtk = listCard.sort(compareAtk).reverse()[0];
     createCard(cardAtk, "attaque")
 
-    var cardArmor = listCard.sort(compareArmor).reverse()[0];
+    let cardArmor = listCard.sort(compareArmor).reverse()[0];
     createCard(cardArmor, "armor")
 
-    var cardPlayed = listCard.sort(comparePlayed).reverse()[0];
+    let cardPlayed = listCard.sort(comparePlayed).reverse()[0];
     createCard(cardPlayed, "played")
 
-    var cardVictory = listCard.sort(compareVictory).reverse()[0];
+    let cardVictory = listCard.sort(compareVictory).reverse()[0];
     createCard(cardVictory, "Victory")
 
-    /*  console.log(listCard); */
-    /*     console.log(cardAtk);
-        console.log(cardArmor);
-        console.log(cardPlayed);
-        console.log(cardVictory); */
+
 
 }
 
 function addRow(card) {
-    var tr = document.createElement('tr');
+    let tr = document.createElement('tr');
 
     Object.entries(card).forEach(([key, value]) => {
         /*  console.log(`${key} ${value}`); */
-        var td = document.createElement('td');
+        let td = document.createElement('td');
         td.innerHTML = value;
         tr.appendChild(td);
     });
@@ -54,20 +49,14 @@ function addRow(card) {
 }
 
 function createHeaderTab(tabkey) {
-    var tr = document.createElement('tr');
+    let tr = document.createElement('tr');
     tabkey.forEach(function(key) {
-        var th = document.createElement('th');
+        let th = document.createElement('th');
         th.innerHTML = key;
         tr.appendChild(th);
     })
     tab.appendChild(tr);
 }
-
-function MaxAtk(cardA, cardB) {
-
-
-}
-
 
 function compareAtk(cardA, cardB) {
     if (cardA instanceof Card && cardB instanceof Card) {
@@ -125,28 +114,21 @@ function comparePlayed(cardA, cardB) {
     }
 }
 
-
-
 function createCard(card, title) {
-    var article = document.createElement('article');
+    let article = document.createElement('article');
     article.id = "card";
     container.appendChild(article);
 
     if (card instanceof Card) {
 
         /*Titre de le carte */
-        var titre = document.createElement('p')
+        let titre = document.createElement('p')
         titre.id = "cardtitle";
         titre.innerHTML = title;
         article.appendChild(titre);
 
-        /*         
-                var div = document.createElement('div');
-                div.id = "cardid";
-                article.appendChild(div);
-         */
         /*numero de la carte (id) */
-        var numcard = document.createElement('p');
+        let numcard = document.createElement('p');
         numcard.id = "numcard";
         numcard.innerHTML = card.getId();
         /* div.appendChild(numcard); */
@@ -154,90 +136,85 @@ function createCard(card, title) {
 
 
         //#region div d en tete avec nom de la carte played et victory 
-        var divEnTete = document.createElement('div');
+        let divEnTete = document.createElement('div');
         divEnTete.id = "diventete";
         article.appendChild(divEnTete);
 
         /*nom de la carte */
-        var namecard = document.createElement('p');
+        let namecard = document.createElement('p');
         namecard.id = "namecard";
         namecard.innerHTML = card.getName();
         divEnTete.appendChild(namecard);
 
-        var divscore = document.createElement('div');
+        let divscore = document.createElement('div');
         divscore.id = "divscore";
         divEnTete.appendChild(divscore)
 
-        var played = document.createElement('p');
+        let played = document.createElement('p');
         played.id = "playedcard";
         played.innerHTML = " Played :" + card.getPlayed();
         divscore.appendChild(played);
 
-        var victorycard = document.createElement('p');
+        let victorycard = document.createElement('p');
         victorycard.id = "victorycard";
         victorycard.innerHTML = "Victory :" + card.getVictory();
         divscore.appendChild(victorycard);
         //#endregion
 
 
-        var imgcard = document.createElement('img');
+        let imgcard = document.createElement('img');
         imgcard.id = "imgcard";
         imgcard.src = "./img/icone.png";
         article.appendChild(imgcard);
 
-        var divPower = document.createElement('div');
+        let divPower = document.createElement('div');
         divPower.id = 'divpower';
         article.appendChild(divPower);
 
 
-        var powerP = document.createElement('h2');
+        let powerP = document.createElement('h2');
         powerP.id = 'powerP';
         powerP.innerHTML = "Power";
         divPower.appendChild(powerP);
 
-        var powerValue = document.createElement('h2');
+        let powerValue = document.createElement('h2');
         powerValue.id = 'powerValue';
         powerValue.innerHTML = card.getPower();
         divPower.appendChild(powerValue);
 
-        var divAtk = document.createElement('div');
+        let divAtk = document.createElement('div');
         divAtk.id = 'divAtk';
         article.appendChild(divAtk);
 
 
-        var atkP = document.createElement('h2');
+        let atkP = document.createElement('h2');
         atkP.id = 'atkP';
         atkP.innerHTML = "Attack";
         divAtk.appendChild(atkP);
 
-        var atkValue = document.createElement('h2');
+        let atkValue = document.createElement('h2');
         atkValue.id = 'atkValue';
         atkValue.innerHTML = card.getAttack();
         divAtk.appendChild(atkValue);
 
-        var divArmor = document.createElement('div');
+        let divArmor = document.createElement('div');
         divArmor.id = 'divArmor';
         article.appendChild(divArmor);
 
-        var armorP = document.createElement('h2');
+        let armorP = document.createElement('h2');
         armorP.id = 'armorP';
         armorP.innerHTML = "Armor";
         divArmor.appendChild(armorP);
 
-        var armorValue = document.createElement('h2');
+        let armorValue = document.createElement('h2');
         armorValue.id = 'armorValue';
         armorValue.innerHTML = card.getArmor();
         divArmor.appendChild(armorValue);
 
-        var divfooter = document.createElement('div');
+        let divfooter = document.createElement('div');
         divfooter.id = "divfoot";
         article.appendChild(divfooter);
 
     }
 
 }
-
-
-/* id name level description power 
-attack armor damage mitigation played 
-victory defeat draw */
