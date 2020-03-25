@@ -1,0 +1,182 @@
+:root {
+    /* couleur de fond des lignes du tableau*/
+    --gray: #CCCCCC;
+    /*couleur des separateur du header*/
+    --blue: #0006EA;
+    /*couleur de fond du header*/
+    --lightheader: #DDDDDD;
+    /* couleur fond image carte*/
+    --fondcarte: #171717;
+    /*fond vert titre carte*/
+    --titrecarte: #003300;
+    /*couleur power violet*/
+    --powercolor: #6600FF;
+    /*couleur attaque rouge*/
+    --atkcolor: #BE0000;
+    /*couleur armor bleu*/
+    --armorcolor: #1F4E79;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+section {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+header {
+    height: 7em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--atkcolor);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid black;
+}
+
+table td {
+    padding: 0.4em 0 0.4em 1em;
+}
+
+table th {
+    border-right: 1px solid var(--blue);
+}
+
+table th:last-child {
+    border: none;
+}
+
+table tr:first-child {
+    background: var(--lightheader);
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+table tr:nth-child(odd) {
+    background-color: var(--gray);
+}
+
+#card {
+    margin-top: 1em;
+    background-color: var(--lightheader);
+    text-align: center;
+    display: grid;
+    width: 30em;
+    grid-template-areas: "titre titre titre" "numcard entete entete" "image image power" "image image atk" "image image armor" "footer footer footer";
+    grid-template-rows: 3em 5em 5em 5em 5em 3em;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    background-color: black;
+}
+
+#carteContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#cardtitle {
+    grid-area: titre;
+    background-color: white;
+    font-size: 36px;
+}
+
+#numcard {
+    grid-area: numcard;
+    background-color: var(--titrecarte);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+#namecard {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+#diventete {
+    grid-area: entete;
+    background-color: var(--titrecarte);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#imgcard {
+    align-self: center;
+    grid-area: image;
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    background-color: var(--fondcarte);
+}
+
+#divpower {
+    grid-area: power;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    color: white;
+}
+
+#powerValue {
+    color: var(--powercolor);
+}
+
+#divAtk {
+    grid-area: atk;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    color: white;
+}
+
+#atkValue {
+    color: var(--atkcolor);
+}
+
+#divArmor {
+    grid-area: armor;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    color: white;
+}
+
+#armorValue {
+    color: var(--armorcolor);
+}
+
+#divfoot {
+    grid-area: footer;
+    background-color: black;
+}
+
+#divscore {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+footer {
+    height: 5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: black;
+}
